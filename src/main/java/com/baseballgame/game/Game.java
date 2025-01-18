@@ -23,23 +23,22 @@ public class Game {
     private int isProgressGameNumber = 1;
     Integer[] answer = computer.getAnswer();
 
-    public void startPlay(String input) throws IOException {
-        int[] inputNumbers = inputChecker.getIntputNumbers(input);
-        int ballNumber = ballChecker.getBallResult(inputNumbers, answer);
-        int strikeNumber = strikeChecker.getStrikeResult(inputNumbers, answer);
-        boolean isNothing = nothingChecker.getNothingResult(inputNumbers, answer);
+    public int startPlay(String input) throws IOException {
+        int[] userNumbers = inputChecker.getUserNumbers(input);
+        int ballNumber = ballChecker.getBallResult(userNumbers, answer);
+        int strikeNumber = strikeChecker.getStrikeResult(userNumbers, answer);
+        boolean isNothing = nothingChecker.getNothingResult(userNumbers, answer);
 
         saveGameResult(ballNumber, strikeNumber, isNothing);
         printGameResult();
+        removeGameResult();
 
         if(checkThreeStrike(strikeNumber)) {
             isProgressGameNumber = isProgressGame();
         }
-    }
-
-    public int getProgressGameNumber() {
         return isProgressGameNumber;
     }
+
 
     private boolean checkThreeStrike(int strikeNumber){
         if(strikeNumber == 3) {
@@ -76,8 +75,12 @@ public class Game {
         for(String result : gameResult) {
             System.out.print(result + " ");
         }
+        System.out.println();
     }
 
+    private void removeGameResult() {
+        gameResult.clear();
+    }
 
 
 }

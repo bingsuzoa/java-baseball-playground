@@ -1,21 +1,19 @@
 package com.baseballgame.rule;
 
-import java.util.StringTokenizer;
 
 public class InputChecker {
 
-    private int[] inputNumbers;
+    private int[] userNumbers = new int[3];
 
-    private int[] initInput(String input) {
-        StringTokenizer st = new StringTokenizer(input);
+    private int[] sortUserNumbers(String input) {
         for(int i = 0; i < 3; i++) {
-            inputNumbers[i] = Integer.parseInt(st.nextToken());
+            userNumbers[i] = Integer.parseInt(input.substring(i, i+1));
         }
-        return inputNumbers;
+        return userNumbers;
     }
 
-    public int[] getIntputNumbers(String input) {
-        return initInput(input);
+    public int[] getUserNumbers(String input) {
+        return sortUserNumbers(input);
     }
 
 

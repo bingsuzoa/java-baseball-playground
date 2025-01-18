@@ -3,31 +3,37 @@ package com.baseballgame.rule;
 public class BallChecker {
     StrikeChecker strikeChecker = new StrikeChecker();
 
-    public int getBallResult(int[] inputNumbers, Integer[] answer) {
-        return addBallNumber(inputNumbers, answer);
+    public int getBallResult(int[] userNumbers, Integer[] answer) {
+        return subtractStrikeFromSum(userNumbers, answer);
     }
 
-    private int addBallNumber(int[] inputNumbers, Integer[] answer) {
-        int count = 0;
+    private int subtractStrikeFromSum(int[] userNumbers, Integer[] answer) {
+        int sumUserNumbersInAnswer = sumUserNumbersInAnswer(userNumbers, answer);
+        int strikeNumber = strikeChecker.getStrikeResult(userNumbers, answer);
+        int ballNumber = sumUserNumbersInAnswer - strikeNumber;
 
-        for(int i = 0; i < inputNumbers.length; i++) {
-            count += compareNumberByAllIndex(inputNumbers[i], answer);
+        return ballNumber;
+    }
+
+    private int sumUserNumbersInAnswer(int[] userNumbers, Integer[] answer) {
+        int sumUserNumbersInAnswer = 0;
+
+        for(int i = 0; i < userNumbers.length; i++) {
+            sumUserNumbersInAnswer += countUserNumberInAnswer(userNumbers[i], answer);
         }
-
-        count -= strikeChecker.getStrikeResult(inputNumbers, answer);
-        return count;
+        return sumUserNumbersInAnswer;
     }
 
-    private int compareNumberByAllIndex(int inputNumber, Integer[] answer) {
-        int countByAllIndex = 0;
+    private int countUserNumberInAnswer(int userNumber, Integer[] answer) {
+        int countUserNumberInAnswer = 0;
         for(int i = 0; i < answer.length; i++) {
-            countByAllIndex += compareNumber(answer[i], inputNumber);
+            countUserNumberInAnswer += compareNumber(answer[i], userNumber);
         }
-        return countByAllIndex;
+        return countUserNumberInAnswer;
     }
 
-    private int compareNumber(int answerNumber, int inputNumber) {
-        if(answerNumber == inputNumber) {
+    private int compareNumber(int answerNumber, int userNumber) {
+        if(answerNumber == userNumber) {
             return 1;
         }
         return 0;

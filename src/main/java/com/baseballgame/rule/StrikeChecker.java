@@ -4,18 +4,18 @@ package com.baseballgame.rule;
 public class StrikeChecker {
 
     public int getStrikeResult(int[] inputNumbers, Integer[] answer) {
-        return addStrikeNumber(inputNumbers, answer);
+        return countStrikeNumber(inputNumbers, answer);
     }
 
-    private int addStrikeNumber(int[] inputNumbers, Integer[] answer) {
-        int count = 0;
+    private int countStrikeNumber(int[] inputNumbers, Integer[] answer) {
+        int countStrikeNumber = 0;
         for(int i = 0; i < inputNumbers.length; i++) {
-            count += compareNumberBySameIndex(answer[i], inputNumbers[i]);
+            countStrikeNumber += compareNumber(answer[i], inputNumbers[i]);
         }
-        return count;
+        return countStrikeNumber;
     }
 
-    private int compareNumberBySameIndex(int answerNumber, int inputNumber) {
+    private int compareNumber(int answerNumber, int inputNumber) {
         if(answerNumber == inputNumber) {
             return 1;
         }
