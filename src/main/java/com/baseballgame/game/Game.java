@@ -12,51 +12,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
     InputChecker inputChecker = new InputChecker();
     StrikeChecker strikeChecker = new StrikeChecker();
     BallChecker ballChecker = new BallChecker();
     NothingChecker nothingChecker = new NothingChecker();
     Computer computer = new Computer();
+    Progress progress = new Progress();
 
     private List<String> gameResult = new ArrayList<>();
-    private int isProgressGameNumber = 1;
     Integer[] answer = computer.getAnswer();
+    int[] userNumbers;
+    int ballNumber;
+    int strikeNumber;
+    boolean isNothing;
 
-    public int startPlay(String input) throws IOException {
-        int[] userNumbers = inputChecker.getUserNumbers(input);
-        int ballNumber = ballChecker.getBallResult(userNumbers, answer);
-        int strikeNumber = strikeChecker.getStrikeResult(userNumbers, answer);
-        boolean isNothing = nothingChecker.getNothingResult(userNumbers, answer);
+    public int startPlay(String input) {
+        try {
+            userNumbers = inputChecker.getUserNumbers(input);
+            ballNumber = ballChecker.getBallResult(userNumbers, answer);
+            strikeNumber = strikeChecker.getStrikeResult(userNumbers, answer);
+            isNothing = nothingChecker.getNothingResult(userNumbers, answer);
 
-        saveGameResult(ballNumber, strikeNumber, isNothing);
-        printGameResult();
-        removeGameResult();
-
-        if(checkThreeStrike(strikeNumber)) {
-            isProgressGameNumber = isProgressGame();
+            saveGameResult(ballNumber, strikeNumber, isNothing);
+            printGameResult();
+            removeGameResult();
+            return getProgressNumber(strikeNumber);
+        } catch (IllegalArgumentException | IOException e) {
+            System.out.println(e.getMessage());
         }
-        return isProgressGameNumber;
+        return 1;
+    }
+    private int getProgressNumber(int strikeNumber) throws IOException {
+        if(checkThreeStrike(strikeNumber)) {
+            return progress.isProgressGame();
+        }
+        return 1;
     }
 
-
-    private boolean checkThreeStrike(int strikeNumber){
+    private boolean checkThreeStrike(int strikeNumber) throws IOException {
         if(strikeNumber == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 다시 시작하려면 1, 종료하려면 2를 입력하세요.");
             return true;
         }
         return false;
-    }
-
-    public int isProgressGame() throws IOException {
-        int isProgressGame = Integer.parseInt(buffer.readLine());
-
-        if(isProgressGame == 1) {
-            answer = computer.getAnswer();
-            return isProgressGame;
-        }
-        return isProgressGame;
     }
 
     private void saveGameResult(int ballNumber, int strikeNumber, boolean isNothing) {
