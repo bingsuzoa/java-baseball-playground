@@ -1,6 +1,7 @@
 package com.baseballgame.game;
 
 import com.baseballgame.computer.Computer;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,7 +13,7 @@ public class Progress {
     public int isProgressGame() throws IOException {
         int gameProgressNumber = getInputWhenThreeStrike();
 
-        if(gameProgressNumber == 1) {
+        if (gameProgressNumber == 1) {
             computer.getAnswer();
         }
         return gameProgressNumber;
@@ -22,7 +23,7 @@ public class Progress {
         int isProgressNumber = 1;
         boolean isValid = false;
         System.out.println("게임을 다시 시작하려면 1, 종료하려면 2를 입력하세요.");
-        while(!isValid) {
+        while (!isValid) {
             isProgressNumber = Integer.parseInt(buffer.readLine());
             isValid = isValidNumber(isProgressNumber);
         }
@@ -30,7 +31,7 @@ public class Progress {
     }
 
     private boolean isValidNumber(int isProgressGameNumber) {
-        if(isProgressGameNumber != 1 && isProgressGameNumber != 2) {
+        if (isProgressGameNumber != 1 && isProgressGameNumber != 2) {
             System.out.println("올바른 입력이 아닙니다. 1 또는 2만 입력해주세요.");
             return false;
         }

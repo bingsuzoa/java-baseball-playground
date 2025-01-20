@@ -7,6 +7,7 @@ import com.baseballgame.rule.InputChecker;
 import com.baseballgame.rule.NothingChecker;
 import com.baseballgame.rule.StrikeChecker;
 import org.junit.jupiter.api.Assertions;
+
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
@@ -14,13 +15,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
 
 public class StringTest {
-    /////////////*****해피 테스트*****/////////////
+    /// //////////*****해피 테스트*****/////////////
     @DisplayName("랜덤 숫자 중복 여부 확인 테스트")
     @Test
     void getAnswer_true_notDuplicated() {
@@ -54,7 +54,7 @@ public class StringTest {
     void getUserNumbers_true_StringToIntegerArray() {
         InputChecker inputChecker = new InputChecker();
         int[] userNumbers = inputChecker.getUserNumbers("123");
-        int[] compareNumbers = {1,2,3};
+        int[] compareNumbers = {1, 2, 3};
         Arrays.equals(userNumbers, compareNumbers);
     }
 
@@ -62,10 +62,10 @@ public class StringTest {
     @Test
     void getBallResult_true_ifValueMatch() {
         BallChecker ballChecker = new BallChecker();
-        int[] userNumbers_1 = {1,3,4};
-        int[] userNumbers_2 = {1,3,5};
-        int[] userNumbers_3 = {3,4,1};
-        Integer[] answer = {3,5,6};
+        int[] userNumbers_1 = {1, 3, 4};
+        int[] userNumbers_2 = {1, 3, 5};
+        int[] userNumbers_3 = {3, 4, 1};
+        Integer[] answer = {3, 5, 6};
 
         Assertions.assertEquals(1, ballChecker.getBallResult(userNumbers_1, answer));
         Assertions.assertEquals(2, ballChecker.getBallResult(userNumbers_2, answer));
@@ -76,10 +76,10 @@ public class StringTest {
     @Test
     void getStrikeResult_true_ifValueMatch() {
         StrikeChecker strikeChecker = new StrikeChecker();
-        int[] userNumbers_1 = {3,1,6};
-        int[] userNumbers_2 = {1,3,5};
-        int[] userNumbers_3 = {3,4,1};
-        Integer[] answer = {3,5,6};
+        int[] userNumbers_1 = {3, 1, 6};
+        int[] userNumbers_2 = {1, 3, 5};
+        int[] userNumbers_3 = {3, 4, 1};
+        Integer[] answer = {3, 5, 6};
 
         Assertions.assertEquals(2, strikeChecker.getStrikeResult(userNumbers_1, answer));
         Assertions.assertEquals(0, strikeChecker.getStrikeResult(userNumbers_2, answer));
@@ -90,9 +90,9 @@ public class StringTest {
     @Test
     void getNothingResult_true_ifNotHavingMatchingValue() {
         NothingChecker nothingChecker = new NothingChecker();
-        int[] userNumbers_1 = {3,1,6};
-        int[] userNumbers_2 = {2,1,4};
-        Integer[] answer = {3,5,6};
+        int[] userNumbers_1 = {3, 1, 6};
+        int[] userNumbers_2 = {2, 1, 4};
+        Integer[] answer = {3, 5, 6};
 
         Assertions.assertFalse(nothingChecker.getNothingResult(userNumbers_1, answer));
         Assertions.assertTrue(nothingChecker.getNothingResult(userNumbers_2, answer));
@@ -111,15 +111,15 @@ public class StringTest {
         wrongAnswer[2] = answer[0];
 
         String input = Arrays.stream(wrongAnswer)
-                        .mapToObj(String::valueOf)
-                        .collect(Collectors.joining());
+                .mapToObj(String::valueOf)
+                .collect(Collectors.joining());
         Assertions.assertEquals(1, game.startPlay(input));
     }
 
-    /////////////*****예외 테스트*****/////////////
+    /// //////////*****예외 테스트*****/////////////
     @DisplayName("유저의 입력이 3개가 아닌 경우")
     @ParameterizedTest
-    @ValueSource(strings = {"3","1234", "", " "})
+    @ValueSource(strings = {"3", "1234", "", " "})
     void getUserNumbers_StringIndexOutOfBoundsException_inputNumberNot3(String value) {
         InputChecker inputChecker = new InputChecker();
         Assertions.assertThrows(StringIndexOutOfBoundsException.class, () -> inputChecker.getUserNumbers(value));
@@ -127,7 +127,7 @@ public class StringTest {
 
     @DisplayName("유저의 입력에 중복이 존재하는 경우")
     @ParameterizedTest
-    @ValueSource(strings = {"112","133", "554"})
+    @ValueSource(strings = {"112", "133", "554"})
     void getUserNumbers_IllegalArgumentException_isDuplicatedInput(String value) {
         InputChecker inputChecker = new InputChecker();
         Assertions.assertThrows(IllegalArgumentException.class, () -> inputChecker.getUserNumbers(value));
@@ -135,7 +135,7 @@ public class StringTest {
 
     @DisplayName("유저가 올바른 입력을 하지 않은 경우(0 또는 숫자가 아닌 입력)")
     @ParameterizedTest
-    @ValueSource(strings = {"012","asd", "1a5"})
+    @ValueSource(strings = {"012", "asd", "1a5"})
     void getUserNumbers_IllegalArgumentException_notValidInput(String value) {
         InputChecker inputChecker = new InputChecker();
         Assertions.assertThrows(IllegalArgumentException.class, () -> inputChecker.getUserNumbers(value));

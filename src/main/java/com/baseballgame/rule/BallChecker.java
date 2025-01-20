@@ -18,7 +18,7 @@ public class BallChecker {
     private int sumUserNumbersInAnswer(int[] userNumbers, Integer[] answer) {
         int sumUserNumbersInAnswer = 0;
 
-        for(int i = 0; i < userNumbers.length; i++) {
+        for (int i = 0; i < userNumbers.length; i++) {
             sumUserNumbersInAnswer += countUserNumberInAnswer(userNumbers[i], answer);
         }
         return sumUserNumbersInAnswer;
@@ -26,14 +26,14 @@ public class BallChecker {
 
     private int countUserNumberInAnswer(int userNumber, Integer[] answer) {
         int countUserNumberInAnswer = 0;
-        for(int i = 0; i < answer.length; i++) {
+        for (int i = 0; i < answer.length; i++) {
             countUserNumberInAnswer += compareNumber(answer[i], userNumber);
         }
         return countUserNumberInAnswer;
     }
 
     private int compareNumber(int answerNumber, int userNumber) {
-        if(answerNumber == userNumber) {
+        if (answerNumber == userNumber) {
             return 1;
         }
         return 0;

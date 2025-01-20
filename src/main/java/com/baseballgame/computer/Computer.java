@@ -11,7 +11,7 @@ public class Computer {
     private Integer[] createAnswer() {
         Set<Integer> DuplicationCheck = new HashSet<>();
 
-        while(DuplicationCheck.size() < 3) {
+        while (DuplicationCheck.size() < 3) {
             DuplicationCheck.add(createRandomNumber());
         }
 

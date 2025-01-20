@@ -5,9 +5,8 @@ import com.baseballgame.rule.BallChecker;
 import com.baseballgame.rule.InputChecker;
 import com.baseballgame.rule.NothingChecker;
 import com.baseballgame.rule.StrikeChecker;
-import java.io.BufferedReader;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class Game {
     Computer computer = new Computer();
     Progress progress = new Progress();
 
-    private List<String> gameResult = new ArrayList<>();
+    private final List<String> gameResult = new ArrayList<>();
     Integer[] answer = computer.getAnswer();
     int[] userNumbers;
     int ballNumber;
@@ -37,20 +36,21 @@ public class Game {
             printGameResult();
             removeGameResult();
             return getProgressNumber(strikeNumber);
-        } catch (IllegalArgumentException | IOException | StringIndexOutOfBoundsException e ) {
+        } catch (IllegalArgumentException | IOException | StringIndexOutOfBoundsException e) {
             System.out.println(e.getMessage());
         }
         return 1;
     }
+
     private int getProgressNumber(int strikeNumber) throws IOException {
-        if(checkThreeStrike(strikeNumber)) {
+        if (checkThreeStrike(strikeNumber)) {
             return progress.isProgressGame();
         }
         return 1;
     }
 
-    private boolean checkThreeStrike(int strikeNumber) throws IOException {
-        if(strikeNumber == 3) {
+    private boolean checkThreeStrike(int strikeNumber) {
+        if (strikeNumber == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
@@ -58,19 +58,19 @@ public class Game {
     }
 
     private void saveGameResult(int ballNumber, int strikeNumber, boolean isNothing) {
-        if(ballNumber > 0) {
+        if (ballNumber > 0) {
             gameResult.add(ballNumber + "볼");
         }
-        if(strikeNumber > 0) {
+        if (strikeNumber > 0) {
             gameResult.add(strikeNumber + "스트라이크");
         }
-        if(isNothing) {
+        if (isNothing) {
             gameResult.add("낫싱");
         }
     }
 
     private void printGameResult() {
-        for(String result : gameResult) {
+        for (String result : gameResult) {
             System.out.print(result + " ");
         }
         System.out.println();
