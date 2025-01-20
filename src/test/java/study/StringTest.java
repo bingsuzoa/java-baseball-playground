@@ -98,31 +98,47 @@ public class StringTest {
         Assertions.assertTrue(nothingChecker.getNothingResult(userNumbers_2, answer));
     }
 
-//    @DisplayName("유저의 입력이 정답이 아니면 false 리턴함으로써 게임을 계속 진행하는 테스트")
-//    @Test
-//    void startPlay_true_return1IfNotAnswer() throws IOException {
-//        Game game = new Game();
-//        Computer computer = new Computer();
-//
-//        Integer[] answer = computer.getAnswer();
-//        int[] wrongAnswer = new int[3];
-//        wrongAnswer[0] = answer[2];
-//        wrongAnswer[1] = answer[1];
-//        wrongAnswer[2] = answer[0];
-//
-//        String input = Arrays.stream(wrongAnswer)
-//                        .mapToObj(String::valueOf)
-//                        .collect(Collectors.joining());
-//
-//        Assertions.assertFalse(game.startPlay(input));
-//    }
-    /////////////*****예외 테스트*****/////////////
-    @DisplayName("게임 진행 여부를 결정하는 입력이 1 또는 2가 아닌 경우")
-    @ParameterizedTest
-    @ValueSource(ints = {3,4,0})
-    void startPlay_illegalArgumentException_inputNot1or2(int value) throws IOException {
+    @DisplayName("유저의 입력이 정답이 아니면 1을 리턴함으로써 게임을 계속 진행하는 테스트")
+    @Test
+    void startPlay_return1IfNotAnswer() {
         Game game = new Game();
-        int isProgressGameNumber = value;
+        Computer computer = new Computer();
+
+        Integer[] answer = computer.getAnswer();
+        int[] wrongAnswer = new int[3];
+        wrongAnswer[0] = answer[2];
+        wrongAnswer[1] = answer[1];
+        wrongAnswer[2] = answer[0];
+
+        String input = Arrays.stream(wrongAnswer)
+                        .mapToObj(String::valueOf)
+                        .collect(Collectors.joining());
+        Assertions.assertEquals(1, game.startPlay(input));
+    }
+
+    /////////////*****예외 테스트*****/////////////
+    @DisplayName("유저의 입력이 3개가 아닌 경우")
+    @ParameterizedTest
+    @ValueSource(strings = {"3","1234", "", " "})
+    void getUserNumbers_StringIndexOutOfBoundsException_inputNumberNot3(String value) {
+        InputChecker inputChecker = new InputChecker();
+        Assertions.assertThrows(StringIndexOutOfBoundsException.class, () -> inputChecker.getUserNumbers(value));
+    }
+
+    @DisplayName("유저의 입력에 중복이 존재하는 경우")
+    @ParameterizedTest
+    @ValueSource(strings = {"112","133", "554"})
+    void getUserNumbers_IllegalArgumentException_isDuplicatedInput(String value) {
+        InputChecker inputChecker = new InputChecker();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> inputChecker.getUserNumbers(value));
+    }
+
+    @DisplayName("유저가 올바른 입력을 하지 않은 경우(0 또는 숫자가 아닌 입력)")
+    @ParameterizedTest
+    @ValueSource(strings = {"012","asd", "1a5"})
+    void getUserNumbers_IllegalArgumentException_notValidInput(String value) {
+        InputChecker inputChecker = new InputChecker();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> inputChecker.getUserNumbers(value));
     }
 
 

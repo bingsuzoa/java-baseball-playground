@@ -21,8 +21,8 @@ public class Progress {
     private int getInputWhenThreeStrike() throws IOException {
         int isProgressNumber = 1;
         boolean isValid = false;
+        System.out.println("게임을 다시 시작하려면 1, 종료하려면 2를 입력하세요.");
         while(!isValid) {
-            System.out.println("게임을 다시 시작하려면 1, 종료하려면 2를 입력하세요.");
             isProgressNumber = Integer.parseInt(buffer.readLine());
             isValid = isValidNumber(isProgressNumber);
         }
@@ -31,7 +31,8 @@ public class Progress {
 
     private boolean isValidNumber(int isProgressGameNumber) {
         if(isProgressGameNumber != 1 && isProgressGameNumber != 2) {
-            throw new IllegalArgumentException(isProgressGameNumber + " 올바른 입력이 아닙니다. 1 또는 2만 입력해주세요.");
+            System.out.println("올바른 입력이 아닙니다. 1 또는 2만 입력해주세요.");
+            return false;
         }
         return true;
     }

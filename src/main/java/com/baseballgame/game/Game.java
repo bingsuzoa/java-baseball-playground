@@ -37,7 +37,7 @@ public class Game {
             printGameResult();
             removeGameResult();
             return getProgressNumber(strikeNumber);
-        } catch (IllegalArgumentException | IOException e) {
+        } catch (IllegalArgumentException | IOException | StringIndexOutOfBoundsException e ) {
             System.out.println(e.getMessage());
         }
         return 1;
