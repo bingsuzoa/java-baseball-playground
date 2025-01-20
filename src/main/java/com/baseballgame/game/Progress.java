@@ -13,9 +13,6 @@ public class Progress {
     public int isProgressGame() throws IOException {
         int gameProgressNumber = getInputWhenThreeStrike();
 
-        if (gameProgressNumber == 1) {
-            computer.getAnswer();
-        }
         return gameProgressNumber;
     }
 

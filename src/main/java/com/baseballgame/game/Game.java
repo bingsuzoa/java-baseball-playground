@@ -44,6 +44,7 @@ public class Game {
 
     private int getProgressNumber(int strikeNumber) throws IOException {
         if (checkThreeStrike(strikeNumber)) {
+            answer = computer.getAnswer();
             return progress.isProgressGame();
         }
         return 1;

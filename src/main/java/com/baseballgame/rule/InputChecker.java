@@ -9,6 +9,7 @@ public class InputChecker {
     private int[] userNumbers = new int[3];
 
     private int[] sortUserNumbers(String input) {
+        input = input.replace(" ", "");
         isValidInputNumber(input);
         isDuplicatedInput(input);
         isNumberInput(input);
@@ -37,7 +38,7 @@ public class InputChecker {
     }
 
     private void isNumberInput(String input) {
-        if (!input.matches("^[1-9]")) {
+        if (!input.matches("[1-9]+")) {
             throw new IllegalArgumentException(input + " : 게임이 불가능한 입력값이 있습니다. 1~9까지의 숫자 입력이 필요합니다.");
         }
     }
