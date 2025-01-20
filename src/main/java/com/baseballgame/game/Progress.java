@@ -1,6 +1,5 @@
 package com.baseballgame.game;
 
-import com.baseballgame.computer.Computer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +7,6 @@ import java.io.InputStreamReader;
 
 public class Progress {
     BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
-    Computer computer = new Computer();
 
     public int isProgressGame() throws IOException {
         int gameProgressNumber = getInputWhenThreeStrike();

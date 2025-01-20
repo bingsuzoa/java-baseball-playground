@@ -5,10 +5,7 @@ import com.baseballgame.rule.BallChecker;
 import com.baseballgame.rule.InputChecker;
 import com.baseballgame.rule.NothingChecker;
 import com.baseballgame.rule.StrikeChecker;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Game {
     InputChecker inputChecker = new InputChecker();
@@ -17,24 +14,19 @@ public class Game {
     NothingChecker nothingChecker = new NothingChecker();
     Computer computer = new Computer();
     Progress progress = new Progress();
+    ResultManagement resultManagement = new ResultManagement();
 
-    private final List<String> gameResult = new ArrayList<>();
     Integer[] answer = computer.getAnswer();
-    int[] userNumbers;
-    int ballNumber;
     int strikeNumber;
-    boolean isNothing;
 
     public int startPlay(String input) {
         try {
-            userNumbers = inputChecker.getUserNumbers(input);
-            ballNumber = ballChecker.getBallResult(userNumbers, answer);
+            int[] userNumbers = inputChecker.getUserNumbers(input);
+            int ballNumber = ballChecker.getBallResult(userNumbers, answer);
             strikeNumber = strikeChecker.getStrikeResult(userNumbers, answer);
-            isNothing = nothingChecker.getNothingResult(userNumbers, answer);
+            boolean isNothing = nothingChecker.getNothingResult(userNumbers, answer);
 
-            saveGameResult(ballNumber, strikeNumber, isNothing);
-            printGameResult();
-            removeGameResult();
+            resultManagement.getGameResult(ballNumber, strikeNumber, isNothing);
             return getProgressNumber(strikeNumber);
         } catch (IllegalArgumentException | IOException | StringIndexOutOfBoundsException e) {
             System.out.println(e.getMessage());
@@ -57,29 +49,4 @@ public class Game {
         }
         return false;
     }
-
-    private void saveGameResult(int ballNumber, int strikeNumber, boolean isNothing) {
-        if (ballNumber > 0) {
-            gameResult.add(ballNumber + "볼");
-        }
-        if (strikeNumber > 0) {
-            gameResult.add(strikeNumber + "스트라이크");
-        }
-        if (isNothing) {
-            gameResult.add("낫싱");
-        }
-    }
-
-    private void printGameResult() {
-        for (String result : gameResult) {
-            System.out.print(result + " ");
-        }
-        System.out.println();
-    }
-
-    private void removeGameResult() {
-        gameResult.clear();
-    }
-
-
 }

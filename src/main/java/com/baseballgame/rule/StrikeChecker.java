@@ -2,6 +2,7 @@ package com.baseballgame.rule;
 
 
 public class StrikeChecker {
+    NumberComparator numberComparator = new NumberComparator();
 
     public int getStrikeResult(int[] inputNumbers, Integer[] answer) {
         return countStrikeNumber(inputNumbers, answer);
@@ -10,16 +11,9 @@ public class StrikeChecker {
     private int countStrikeNumber(int[] inputNumbers, Integer[] answer) {
         int countStrikeNumber = 0;
         for (int i = 0; i < inputNumbers.length; i++) {
-            countStrikeNumber += compareNumber(answer[i], inputNumbers[i]);
+            countStrikeNumber += numberComparator.compareNumber(answer[i], inputNumbers[i]);
         }
         return countStrikeNumber;
-    }
-
-    private int compareNumber(int answerNumber, int inputNumber) {
-        if (answerNumber == inputNumber) {
-            return 1;
-        }
-        return 0;
     }
 
 }
