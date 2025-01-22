@@ -5,6 +5,7 @@ import com.baseballgame.rule.BallChecker;
 import com.baseballgame.rule.InputChecker;
 import com.baseballgame.rule.NothingChecker;
 import com.baseballgame.rule.StrikeChecker;
+
 import java.io.IOException;
 
 public class Game {
