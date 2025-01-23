@@ -1,47 +1,54 @@
 package com.baseballgame.referee;
 
-import java.util.HashMap;
+import com.baseballgame.view.OutputView;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class Result {
-    private final int HIT_THE_BALL = 1;
-    private final int MISS_THE_BALL = 0;
-    private final String STRIKE = "스트라이크";
-    private final String BALL = "볼";
-    private final Map<String, Integer> scoreBoard = new HashMap<>();
+    private final int ANSWER_COUNT = 3;
+    private final Map<String, Integer> scoreBoard;
+    private List<String> resultPrintList;
 
-    public Map<String, Integer> getResult() {
-        return scoreBoard;
+    OutputView outputView = new OutputView();
+
+    public Result(Map<String, Integer> scoreBoard) {
+        this.scoreBoard = scoreBoard;
     }
 
-    private Map<String, Integer> judge(List<Integer> input, List<Integer> answer) {
-        int stikeCount = 0;
-        int ballCount = 0;
-        for(int i = 0; i < answer.size(); i++) {
-            stikeCount += countNumberOfHits(input.get(i), answer.get(i));
+    public boolean isAnswer() {
+        commandPrint();
+        if (scoreBoard.get("스트라이크") == ANSWER_COUNT) {
+            return true;
         }
-        for(int i = 0; i < answer.size(); i++)  {
-            ballCount += addBallCount(input, answer.get(i), stikeCount);
+        return false;
+    }
+    private void commandPrint() {
+        if(!checkResultNothing()) {
+            checkResultStrikeOrBall();
         }
-        scoreBoard.put(STRIKE, stikeCount);
-        scoreBoard.put(BALL, ballCount);
-        return scoreBoard;
+    }
+    private boolean checkResultNothing() {
+        if (scoreBoard.containsKey("낫싱")) {
+            outputView.printNothing();
+            return true;
+        }
+        return false;
     }
 
-    private int addBallCount(List<Integer> input, int answer, int strikeCount) {
-        int ballCount = 0;
-        for(int i = 0; i < input.size(); i++) {
-            ballCount = countNumberOfHits(input.get(i), answer);
+    private void checkResultStrikeOrBall() {
+        for(String result : scoreBoard.keySet()) {
+            insertResultIfCountNotZero(result);
         }
-        ballCount -= strikeCount;
-        return ballCount;
+        outputView.printResult(resultPrintList, scoreBoard);
     }
 
-    private int countNumberOfHits(int input, int answer) {
-        if(input == answer) {
-            return HIT_THE_BALL;
+    private void insertResultIfCountNotZero(String result) {
+        if(scoreBoard.get(result) != 0 && !result.equals("낫싱")) {
+            resultPrintList = new ArrayList<>();
+            resultPrintList.add(result);
         }
-        return MISS_THE_BALL;
     }
+
 }
