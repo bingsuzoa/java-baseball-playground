@@ -19,7 +19,12 @@ public class OutputView {
         System.out.println();
     }
 
+    public void printAnswer() {
+        System.out.println("정답입니다.");
+    }
+
     public void printNothing() {
         System.out.println("낫싱");
     }
+
 }

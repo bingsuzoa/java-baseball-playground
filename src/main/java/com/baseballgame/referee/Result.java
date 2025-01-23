@@ -3,6 +3,7 @@ package com.baseballgame.referee;
 import com.baseballgame.view.OutputView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,16 +15,18 @@ public class Result {
     OutputView outputView = new OutputView();
 
     public Result(Map<String, Integer> scoreBoard) {
-        this.scoreBoard = scoreBoard;
+        this.scoreBoard = new HashMap<>(scoreBoard);
     }
 
     public boolean isAnswer() {
         commandPrint();
         if (scoreBoard.get("스트라이크") == ANSWER_COUNT) {
+            outputView.printAnswer();
             return true;
         }
         return false;
     }
+
     private void commandPrint() {
         if(!checkResultNothing()) {
             checkResultStrikeOrBall();

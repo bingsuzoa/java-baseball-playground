@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class InputValidator {
+    private final int INVALID_NUMBER = 3;
     OutputView outputView = new OutputView();
 
     public boolean isValidatedInput(String threeNumber) {
@@ -17,6 +18,22 @@ public class InputValidator {
             outputView.printError(e.getMessage());
         }
         return false;
+    }
+
+    public int isValidatedRestartNumber(String restartNumber) {
+        try {
+            return Integer.parseInt(validateOnlyNumber1or2(restartNumber));
+        } catch (IllegalArgumentException e) {
+            outputView.printError(e.getMessage());
+        }
+        return INVALID_NUMBER;
+    }
+
+    private String validateOnlyNumber1or2(String restartNumber) {
+        if(!restartNumber.matches("[1-2]")) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+        return restartNumber;
     }
 
     private void validateOnlyNumberAndThreeCount(String threeNumber) {
@@ -35,4 +52,5 @@ public class InputValidator {
             throw new IllegalArgumentException(threeNumber + " : 중복된 숫자는 입력할 수 없습니다.");
         }
     }
+
 }

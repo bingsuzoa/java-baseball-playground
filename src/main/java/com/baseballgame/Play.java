@@ -1,24 +1,20 @@
 package com.baseballgame;
 
 
-import com.baseballgame.computer.Computer;
-import com.baseballgame.player.Numbers;
+import com.baseballgame.player.Input;
 import com.baseballgame.view.InputView;
 
-import java.util.List;
+import java.io.IOException;
 
 public class Play {
     static InputView inputView = new InputView();
 
-    public static void main(String[] args) {
-        boolean isAnswer = false;
+    public static void main(String[] args) throws IOException {
+        boolean isStopGame = false;
+        Input input = new Input();
 
-        Computer computer = new Computer();
-        List<Integer> answer = computer.getNewAnswer();
-        Numbers numbers = new Numbers();
-
-        while (!isAnswer) {
-            isAnswer = numbers.sendInputToReferee(inputView.getThreeNumbers(), answer);
+        while (!isStopGame) {
+            isStopGame = input.sendInputToReferee(inputView.getThreeNumbers());
         }
 
 
