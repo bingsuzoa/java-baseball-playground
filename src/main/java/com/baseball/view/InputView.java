@@ -1,5 +1,4 @@
-package com.baseball;
-
+package com.baseball.view;
 
 import java.util.Scanner;
 

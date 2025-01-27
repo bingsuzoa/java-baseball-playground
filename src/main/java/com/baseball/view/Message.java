@@ -1,4 +1,4 @@
-package com.baseball;
+package com.baseball.view;
 
 public enum Message {
     INVALID_GAME_INPUT("유효하지 않은 입력입니다."),

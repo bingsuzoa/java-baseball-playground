@@ -1,9 +1,9 @@
 package com.baseball.referee;
 
 
-import com.baseball.Message;
-import com.baseball.OutputView;
 import com.baseball.ball.Baseball;
+import com.baseball.view.Message;
+import com.baseball.view.OutputView;
 
 import java.util.List;
 

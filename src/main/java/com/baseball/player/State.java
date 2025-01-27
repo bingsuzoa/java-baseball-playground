@@ -1,8 +1,8 @@
 package com.baseball.player;
 
-import com.baseball.InputView;
-import com.baseball.Message;
 import com.baseball.referee.Referee;
+import com.baseball.view.InputView;
+import com.baseball.view.Message;
 
 public class State {
     private boolean playingState;

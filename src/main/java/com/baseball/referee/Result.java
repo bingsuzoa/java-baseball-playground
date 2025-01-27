@@ -6,9 +6,7 @@ import com.baseball.ball.Baseball;
 import com.baseball.ball.Strike;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Result {
     private static Result result;
@@ -33,11 +31,7 @@ public class Result {
     }
 
     public boolean isThreeStrike() {
-        Set<Baseball> resultCollector = new HashSet<>();
-        for(Baseball result : resultList) {
-            resultCollector.add(result);
-        }
-        if(resultCollector.size() == 1 && resultCollector.contains(Baseball.STRIKE)) {
+        if(strike.isThreeStrike()) {
             return true;
         }
         return false;

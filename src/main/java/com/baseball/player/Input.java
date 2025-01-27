@@ -1,12 +1,9 @@
 package com.baseball.player;
 
-import com.baseball.Message;
-import com.baseball.OutputView;
+import com.baseball.view.Message;
+import com.baseball.view.OutputView;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Input {
     private final String input;
