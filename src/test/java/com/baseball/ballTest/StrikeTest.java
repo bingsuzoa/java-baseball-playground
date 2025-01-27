@@ -28,12 +28,4 @@ public class StrikeTest {
         Assertions.assertEquals(strikeList3, strike.getSTRIKE(inputList, answer3));
     }
 
-    @DisplayName("3스트라이크인 경우 true 출력하는 테스트")
-    @Test
-    public void 쓰리스트라이크() {
-        Strike strike = new Strike();
-        List<Integer> answer1 = new ArrayList<>(Arrays.asList(1, 2, 3));
-        strike.getSTRIKE(inputList, answer1);
-        Assertions.assertTrue(strike.isThreeStrike());
-    }
 }

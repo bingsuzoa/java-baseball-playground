@@ -13,16 +13,16 @@ public class InputView {
     }
 
     public String getPlayerInput(Message message) {
-        System.out.println(message.getMessage());
+        outputView.printEnumMessage(message);
         return scanner.nextLine();
     }
 
     public int getRestartInput(Message message) {
         try {
-            System.out.println(message.getMessage());
+            outputView.printEnumMessage(message);
             return scanner.nextInt();
         } catch (NumberFormatException e) {
-            outputView.printError(Message.INVALID_GAME_INPUT);
+            outputView.printEnumMessage(Message.INVALID_GAME_INPUT);
         }
         return 0;
     }

@@ -23,11 +23,5 @@ public class Strike implements NumberComparator {
         return strikeList;
     }
 
-    public boolean isThreeStrike(){
-        if(strikeList.size() == 3) {
-            return true;
-        }
-        return false;
-    }
 
 }

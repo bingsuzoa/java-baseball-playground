@@ -1,6 +1,7 @@
 package com.baseball.player;
 
 import com.baseball.Message;
+import com.baseball.OutputView;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -9,6 +10,8 @@ import java.util.Set;
 
 public class Input {
     private final String input;
+
+    OutputView outputView = new OutputView();
 
     public Input(String input) {
         this.input = input;
@@ -23,9 +26,14 @@ public class Input {
     }
 
     public boolean isValid() {
-        isNumber1_9AndThree();
-        isDuplicate();
-        return true;
+        try {
+            isNumber1_9AndThree();
+            isDuplicate();
+            return true;
+        } catch (IllegalArgumentException e) {
+            outputView.printStringMessage(e.getMessage());
+        }
+        return false;
     }
 
     private void isNumber1_9AndThree() {

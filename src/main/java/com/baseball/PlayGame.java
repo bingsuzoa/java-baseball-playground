@@ -16,7 +16,7 @@ public class PlayGame {
         InputView inputView = new InputView();
         Player player = new Player();
 
-        while(!player.getPlayerState()) {
+        while(player.getPlayerState()) {
             if(!player.saveValidatedInput(inputView.getPlayerInput(Message.GAME_INPUT_MESSAGE))) {
                 continue;
             }

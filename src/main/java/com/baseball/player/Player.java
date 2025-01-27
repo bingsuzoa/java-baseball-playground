@@ -19,7 +19,7 @@ public class Player {
 
     public boolean saveValidatedInput(String playerInput) {
         Input input = new Input(playerInput);
-        if(input.isValid()) {
+        if (input.isValid()) {
             inputList = input.convertInputToList();
             return true;
         }
@@ -35,9 +35,10 @@ public class Player {
     }
 
     public void updatePlayerState() {
-        this.state.updateStateWhenAnswered();
+        state.updateStateWhenAnswered();
     }
+
     public boolean getPlayerState() {
-        return this.state.getState();
+        return state.getState();
     }
 }

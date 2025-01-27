@@ -7,29 +7,30 @@ import com.baseball.ball.Baseball;
 import java.util.List;
 
 public class Referee {
-    private List<Baseball> resultList;
+    private Result result;
 
-    Result result = new Result();
     OutputView outputView = new OutputView();
 
+    public Referee() {
+        this.result = new Result();
+    }
 
-    public List<Baseball> judgeAndGetResult(List<Integer> inputList, List<Integer> answer) {
-        this.resultList = result.getResultList(inputList, answer);
+    public void judgeAndGetResult(List<Integer> inputList, List<Integer> answer) {
+        result.collectBallAndStrike(inputList, answer);
         printResult();
-        return resultList;
     }
 
     public boolean isThreeStrike() {
-       return result.isThreeStrike();
+        return result.isThreeStrike();
     }
 
     private void printResult() {
         int ballCount = 0;
         int strikeCount = 0;
-        if (resultList.isEmpty()) {
+        if (result.getResult().isEmpty()) {
             outputView.printResult(Baseball.NOTHING.getDescription());
         }
-        for (Baseball result : resultList) {
+        for (Baseball result : result.getResult()) {
             strikeCount += Baseball.STRIKE.getCount(result);
             ballCount += Baseball.BALL.getCount(result);
         }
