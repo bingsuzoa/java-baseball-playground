@@ -16,7 +16,7 @@ public class Computer {
         return answer;
     }
 
-    public List<Integer> ReMakeNewAnswer() {
+    public List<Integer> reMakeNewAnswer() {
         if(referee.isThreeStrike()) {
             answer = makeRandomList();
             return answer;

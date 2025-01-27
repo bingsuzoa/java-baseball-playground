@@ -21,7 +21,7 @@ public class PlayGame {
                 continue;
             }
             player.requestDecisions(answer);
-            answer = computer.ReMakeNewAnswer();
+            answer = computer.reMakeNewAnswer();
             player.updatePlayerState();
         }
     }

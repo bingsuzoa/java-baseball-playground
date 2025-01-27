@@ -20,7 +20,8 @@ public class State {
 
     public void updateStateWhenAnswered() {
         if (referee.isThreeStrike()) {
-            isRestartGame(getRestartNumber());
+            int restartNumber = getRestartNumber();
+            isRestartGame(restartNumber);
         }
     }
 

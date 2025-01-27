@@ -1,6 +1,7 @@
 package com.baseball.referee;
 
 
+import com.baseball.Message;
 import com.baseball.OutputView;
 import com.baseball.ball.Baseball;
 
@@ -25,23 +26,25 @@ public class Referee {
     }
 
     private void printResult() {
+        StringBuilder builder = new StringBuilder();
         int ballCount = 0;
         int strikeCount = 0;
         if (result.getResult().isEmpty()) {
-            outputView.printResult(Baseball.NOTHING.getDescription());
+            builder.append(Baseball.NOTHING.getDescription());
         }
         for (Baseball result : result.getResult()) {
             strikeCount += Baseball.STRIKE.getCount(result);
             ballCount += Baseball.BALL.getCount(result);
         }
         if (strikeCount > 0) {
-            outputView.printResult(strikeCount + Baseball.STRIKE.getDescription());
+            builder.append(strikeCount + Baseball.STRIKE.getDescription());
         }
         if (ballCount > 0) {
-            outputView.printResult(ballCount + Baseball.BALL.getDescription());
+            builder.append(ballCount + Baseball.BALL.getDescription());
         }
+        outputView.printStringMessage(builder.toString());
         if (strikeCount == 3) {
-            outputView.printResult("\n" + "정답입니다.");
+            outputView.printEnumMessage(Message.ANSWER_MESSAGE);
         }
     }
 
