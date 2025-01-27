@@ -12,8 +12,8 @@ public class Referee {
 
     OutputView outputView = new OutputView();
 
-    public Referee() {
-        this.result = new Result();
+    public Referee () {
+        this.result = Result.getInstance();
     }
 
     public void judgeAndGetResult(List<Integer> inputList, List<Integer> answer) {

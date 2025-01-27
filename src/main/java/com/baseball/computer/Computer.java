@@ -1,7 +1,7 @@
 package com.baseball.computer;
 
 
-import com.baseball.referee.Referee;
+import com.baseball.referee.Result;
 
 import java.util.*;
 
@@ -9,7 +9,7 @@ public class Computer {
     private List<Integer> answer;
 
     Random random = new Random();
-    Referee referee = new Referee();
+    Result result = Result.getInstance();
 
     public List<Integer> getNewAnswer() {
         answer = makeRandomList();
@@ -17,7 +17,7 @@ public class Computer {
     }
 
     public List<Integer> reMakeNewAnswer() {
-        if(referee.isThreeStrike()) {
+        if(result.isThreeStrike()) {
             answer = makeRandomList();
             return answer;
         }

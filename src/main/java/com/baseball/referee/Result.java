@@ -11,13 +11,21 @@ import java.util.List;
 import java.util.Set;
 
 public class Result {
+    private static Result result;
     private final List<Baseball> resultList;
 
     Ball ball = new Ball();
     Strike strike = new Strike();
 
-    public Result() {
+    public Result () {
         resultList = new ArrayList<>();
+    }
+
+    public static Result getInstance() {
+        if(result == null) {
+            result = new Result();
+        }
+        return result;
     }
 
     public List<Baseball> getResult() {
