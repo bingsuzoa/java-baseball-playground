@@ -1,0 +1,26 @@
+package com.baseball.hint;
+
+public enum Hint {
+    STRIKE("스트라이크 "),
+    BALL("볼 "),
+    NOTHING("낫싱");
+
+    private final String description;
+
+    Hint(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getCount(Hint hint) {
+        if(this.equals(hint)) {
+            return 1;
+        }
+        return 0;
+    }
+
+
+}
