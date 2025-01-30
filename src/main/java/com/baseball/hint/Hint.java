@@ -16,7 +16,7 @@ public enum Hint {
     }
 
     public int getCount(Hint hint) {
-        if(this.equals(hint)) {
+        if (this.equals(hint)) {
             return 1;
         }
         return 0;

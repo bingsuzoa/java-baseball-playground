@@ -21,7 +21,7 @@ public class Main {
         InputView inputView = new InputView();
         List<Integer> answer = computer.getAnswer();
 
-        while(!isProperInput || wantsToPlay) {
+        while (!isProperInput || wantsToPlay) {
             player = new Player(inputView.getPlayerInput(Message.GAME_START_MESSAGE));
             isProperInput = player.isProperInput();
             GameService gameService = new GameService(player, answer);

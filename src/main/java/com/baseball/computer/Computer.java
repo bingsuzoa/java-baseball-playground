@@ -17,7 +17,7 @@ public class Computer {
     }
 
     public List<Integer> getReAnswer(boolean isCorrect) {
-        if(isCorrect) {
+        if (isCorrect) {
             answer.clear();
             answer = makeRandomList();
         }

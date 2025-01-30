@@ -30,8 +30,8 @@ public class Input {
 
     public List<Integer> getInputList() {
         List<Integer> inputList = new ArrayList<>();
-        for(int i = 0; i < playerInput.length(); i++) {
-            inputList.add(Integer.parseInt(playerInput.substring(i, i+1)));
+        for (int i = 0; i < playerInput.length(); i++) {
+            inputList.add(Integer.parseInt(playerInput.substring(i, i + 1)));
         }
         return inputList;
     }

@@ -39,10 +39,10 @@ public class Result {
     private String getHintMap(int strikeCount, int ballCount) {
         StringBuilder hintMessage = new StringBuilder();
         if (strikeCount != 0) {
-            hintMessage.append(strikeCount+ Hint.STRIKE.getDescription());
+            hintMessage.append(strikeCount + Hint.STRIKE.getDescription());
         }
         if (ballCount != 0) {
-            hintMessage.append(ballCount+ Hint.BALL.getDescription());
+            hintMessage.append(ballCount + Hint.BALL.getDescription());
         }
         if (strikeCount == 0 && ballCount == 0) {
             hintMessage.append(Hint.NOTHING.getDescription());

@@ -12,7 +12,7 @@ public class ComputerTest {
     public void 랜덤정답생성() {
         Computer computer = new Computer();
         StringBuilder buffer = new StringBuilder();
-        for(int answer : computer.getAnswer()) {
+        for (int answer : computer.getAnswer()) {
             buffer.append(answer);
         }
         String answerToString = buffer.toString();

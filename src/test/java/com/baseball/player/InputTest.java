@@ -24,7 +24,7 @@ public class InputTest {
     @Test
     public void 숫자리스트리턴() {
         Input input = new Input("123");
-        List<Integer> answer = new ArrayList<>(Arrays.asList(1,2,3));
+        List<Integer> answer = new ArrayList<>(Arrays.asList(1, 2, 3));
         Assertions.assertEquals(answer, input.getInputList());
     }
 

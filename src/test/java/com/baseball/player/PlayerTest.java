@@ -11,7 +11,7 @@ import java.util.List;
 
 
 public class PlayerTest {
-    List<Integer> inputList = new ArrayList<>(Arrays.asList(1,2,3));
+    List<Integer> inputList = new ArrayList<>(Arrays.asList(1, 2, 3));
 
     @DisplayName("input객체로부터 리스트받아 리턴하는 테스트")
     @Test

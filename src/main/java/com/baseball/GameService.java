@@ -23,7 +23,7 @@ public class GameService {
     }
 
     public boolean startGameAndIsAnswer(boolean isProperInput) {
-        if(!isProperInput) {
+        if (!isProperInput) {
             return false;
         }
         Referee referee = new Referee(player.getPlayerInput(), answer);
