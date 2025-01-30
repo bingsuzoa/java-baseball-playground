@@ -3,15 +3,24 @@ package com.baseball.computer;
 import java.util.*;
 
 public class Computer {
-    private final List<Integer> answer;
+    private List<Integer> answer;
 
     Random random = new Random();
 
     public Computer() {
-        answer = makeRandomList();
+        answer = new ArrayList<>();
     }
 
     public List<Integer> getAnswer() {
+        answer = makeRandomList();
+        return answer;
+    }
+
+    public List<Integer> getReAnswer(boolean isCorrect) {
+        if(isCorrect) {
+            answer.clear();
+            answer = makeRandomList();
+        }
         return answer;
     }
 

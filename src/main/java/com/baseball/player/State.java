@@ -8,10 +8,7 @@ public class State {
         this.wantsToPlay = true;
     }
 
-    public boolean checkPlayerWantsToPlay(boolean isCorrect, int restartNumber) {
-        if (!isCorrect) {
-            return wantsToPlay;
-        }
+    public boolean checkPlayerWantsToPlay(int restartNumber) {
         updateStateBasedOnInput(restartNumber);
         return wantsToPlay;
     }

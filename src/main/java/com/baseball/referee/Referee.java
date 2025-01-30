@@ -16,6 +16,10 @@ public class Referee {
         return result.isCorrect();
     }
 
+    public String getHintMessage() {
+        return result.getHint();
+    }
+
 
 
 }

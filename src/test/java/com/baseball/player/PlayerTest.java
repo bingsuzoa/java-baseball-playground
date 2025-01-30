@@ -33,9 +33,8 @@ public class PlayerTest {
     @Test
     public void 플레이어의게임진행상태확인하는테스트() {
         Player player = new Player("123");
-        boolean isCorrect = false;
         int restartNumber = 1;
-        Assertions.assertTrue(player.getPlayingState(isCorrect, restartNumber));
+        Assertions.assertTrue(player.getPlayingState(restartNumber));
     }
 
 }

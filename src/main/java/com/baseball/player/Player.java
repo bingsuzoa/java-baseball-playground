@@ -1,6 +1,7 @@
 package com.baseball.player;
 
 
+
 import java.util.List;
 
 public class Player {
@@ -13,17 +14,15 @@ public class Player {
     }
 
     public List<Integer> getPlayerInput() {
-
         return input.getInputList();
     }
 
-    public boolean isProperInput() {
-
-        return input.checkProperInput();
+    public boolean getPlayingState(int restartNumber) {
+        return state.checkPlayerWantsToPlay(restartNumber);
     }
 
-    public boolean getPlayingState(boolean isCorrect, int restartNumber) {
-        return state.checkPlayerWantsToPlay(isCorrect, restartNumber);
+    public boolean isProperInput() {
+        return input.checkProperInput();
     }
 
 

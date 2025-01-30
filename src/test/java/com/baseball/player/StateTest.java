@@ -12,8 +12,7 @@ public class StateTest {
     public void 정답일때입력받아게임진행여부확인() {
         State state = new State();
         int restartNumber = 1;
-        boolean isCorrect = true;
-        Assertions.assertTrue(state.checkPlayerWantsToPlay(isCorrect, restartNumber));
+        Assertions.assertTrue(state.checkPlayerWantsToPlay(restartNumber));
     }
 
     @DisplayName("정답 + 플레이어의 입력 2 , false 반환하여 게임 종료하는 테스트")
@@ -21,8 +20,7 @@ public class StateTest {
     public void 게임종료() {
         State state = new State();
         int restartNumber = 2;
-        boolean isCorrect = true;
-        Assertions.assertFalse(state.checkPlayerWantsToPlay(isCorrect, restartNumber));
+        Assertions.assertFalse(state.checkPlayerWantsToPlay(restartNumber));
     }
 
     @DisplayName("오답인 경우 true 반환하여 게임 진행하는 테스트")
@@ -30,7 +28,6 @@ public class StateTest {
     public void 오답일시게임진행() {
         State state = new State();
         int restartNumber = 1;
-        boolean isCorrect = false;
-        Assertions.assertTrue(state.checkPlayerWantsToPlay(isCorrect, restartNumber));
+        Assertions.assertTrue(state.checkPlayerWantsToPlay(restartNumber));
     }
 }
