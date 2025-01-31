@@ -1,6 +1,6 @@
 package com.baseball;
 
-import com.baseball.computer.Computer;
+import com.baseball.computer.AnswerGenerator;
 import com.baseball.player.Player;
 import com.baseball.referee.Referee;
 import com.baseball.view.InputView;
@@ -13,31 +13,32 @@ import java.util.List;
 public class GameService {
     private final InputView inputView;
     private final OutputView outputView;
-    private final Computer computer;
+    private final AnswerGenerator answerGenerator;
 
     private List<Integer> answer;
     private Player player;
 
-    public GameService(InputView inputView, OutputView outputView, Computer computer) {
+    public GameService(InputView inputView, OutputView outputView, AnswerGenerator answerGenerator) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.computer = computer;
+        this.answerGenerator = answerGenerator;
     }
 
     public boolean continueToPlay(boolean isCorrect) {
         int restartNumber = 0;
+        answer = answerGenerator.getAnswer(isCorrect);
         if (!isCorrect) {
             return true;
         }
         while (restartNumber != 1 && restartNumber != 2) {
             restartNumber = inputView.getRestartInput(Message.GAME_RESTART_MESSAGE);
-            answer = computer.getReAnswer(restartNumber);
         }
         return player.isContinueToPlay(restartNumber);
     }
 
     public boolean getHintAndIsAnswer() {
-        answer = computer.getAnswer();
+        boolean isCorrectForStartGame = false;
+        answer = answerGenerator.getAnswer(isCorrectForStartGame);
         Referee referee = new Referee(player.getInputList(), answer);
         outputView.printString(referee.getHintMessage());
         return referee.judgeIsAnswer();

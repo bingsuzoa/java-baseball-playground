@@ -1,7 +1,8 @@
 package com.baseball;
 
 
-import com.baseball.computer.Computer;
+import com.baseball.computer.AnswerGenerator;
+import com.baseball.computer.RandomNumber;
 import com.baseball.view.InputView;
 import com.baseball.view.OutputView;
 
@@ -13,8 +14,8 @@ public class Main {
 
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
-        Computer computer = new Computer();
-        GameService gameService = new GameService(inputView, outputView, computer);
+        AnswerGenerator answerGenerator = new RandomNumber();
+        GameService gameService = new GameService(inputView, outputView, answerGenerator);
 
         while (!isCorrect || continueToPlay) {
             gameService.getPlayerInput();

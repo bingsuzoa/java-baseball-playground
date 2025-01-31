@@ -1,33 +1,29 @@
 package com.baseball.computer;
 
+
 import java.util.*;
 
-public class Computer {
+public class RandomNumber implements AnswerGenerator {
     private List<Integer> answer;
 
     Random random = new Random();
 
-    public Computer() {
-        answer = new ArrayList<>();
+
+    public RandomNumber() {
+        this.answer = new ArrayList<>();
     }
 
-    public List<Integer> getAnswer() {
-        if(answer.isEmpty()) {
+    @Override
+    public List<Integer> getAnswer(boolean isCorrect) {
+        if(answer.isEmpty() || isCorrect) {
             answer = makeRandomList();
             return answer;
         }
         return answer;
     }
-    public List<Integer> getReAnswer(int restartNumber) {
-        if (restartNumber == 1) {
-            answer.clear();
-            answer = makeRandomList();
-        }
-        return answer;
-    }
 
     private List<Integer> makeRandomList() {
-        List<Integer> answer = new ArrayList<>();
+        clearAnswer();
         Set<Integer> uniqueNumbers = new HashSet<>();
         while (uniqueNumbers.size() < 3) {
             uniqueNumbers.add(makeRandomNumber());
@@ -36,6 +32,12 @@ public class Computer {
             answer.add(number);
         }
         return answer;
+    }
+
+    private void clearAnswer() {
+        if(!answer.isEmpty()) {
+            answer.clear();
+        }
     }
 
     private int makeRandomNumber() {

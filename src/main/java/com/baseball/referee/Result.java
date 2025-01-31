@@ -10,46 +10,48 @@ import java.util.List;
 
 
 public class Result {
-    private final int strikeCount;
-    private final int ballCount;
+    private final int strike;
+    private final int ball;
     private final String hintMessage;
 
     private boolean isCorrect;
 
     public Result(List<Integer> inputList, List<Integer> answer) {
-        strikeCount = new Strike(inputList, answer).getStrike();
-        ballCount = new Ball(inputList, answer).getBall();
-        hintMessage = getHintMap(strikeCount, ballCount);
+        strike = new Strike(inputList, answer).getStrike();
+        ball = new Ball(inputList, answer).getBall();
+        hintMessage = getHintMap(strike, ball);
     }
 
     public String getHint() {
+
         return hintMessage;
     }
 
     public boolean isCorrect() {
+
         return isCorrect;
     }
 
-    private boolean checkIsCorrect(int strikeCount) {
-        if (strikeCount == 3) {
+    private boolean checkIsCorrect(int strike) {
+        if (strike == 3) {
             return true;
         }
         return false;
     }
 
-    private String getHintMap(int strikeCount, int ballCount) {
-        isCorrect = checkIsCorrect(strikeCount);
+    private String getHintMap(int strike, int ball) {
+        isCorrect = checkIsCorrect(strike);
         StringBuilder hintMessage = new StringBuilder();
-        if (strikeCount != 0) {
-            hintMessage.append(strikeCount + Hint.STRIKE.getDescription() + " ");
+        if (strike != 0) {
+            hintMessage.append(strike + Hint.STRIKE.getDescription() + " ");
         }
-        if (ballCount != 0) {
-            hintMessage.append(ballCount + Hint.BALL.getDescription());
+        if (ball != 0) {
+            hintMessage.append(ball + Hint.BALL.getDescription());
         }
-        if (strikeCount == 0 && ballCount == 0) {
+        if (strike == 0 && ball == 0) {
             hintMessage.append(Hint.NOTHING.getDescription());
         }
-        if(isCorrect) {
+        if (isCorrect) {
             hintMessage.append("\n" + Message.GAME_ANSWER_MESSAGE.getMessage());
         }
         return hintMessage.toString();
