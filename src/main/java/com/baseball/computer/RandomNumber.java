@@ -5,18 +5,18 @@ import java.util.*;
 
 public class RandomNumber implements AnswerGenerator {
     private List<Integer> answer;
-
-    Random random = new Random();
+    private final Random random;
 
 
     public RandomNumber() {
         this.answer = new ArrayList<>();
+        this.random = new Random();
     }
 
     @Override
     public List<Integer> getAnswer(boolean isCorrect) {
-        if(answer.isEmpty() || isCorrect) {
-            answer = makeRandomList();
+        if (answer.isEmpty() || isCorrect) {
+            this.answer = makeRandomList();
             return answer;
         }
         return answer;
@@ -35,7 +35,7 @@ public class RandomNumber implements AnswerGenerator {
     }
 
     private void clearAnswer() {
-        if(!answer.isEmpty()) {
+        if (!answer.isEmpty()) {
             answer.clear();
         }
     }

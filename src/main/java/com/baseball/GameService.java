@@ -1,54 +1,56 @@
 package com.baseball;
 
-import com.baseball.computer.AnswerGenerator;
 import com.baseball.player.Player;
 import com.baseball.referee.Referee;
 import com.baseball.view.InputView;
 import com.baseball.view.Message;
-import com.baseball.view.OutputView;
 
 
 import java.util.List;
 
 public class GameService {
     private final InputView inputView;
-    private final OutputView outputView;
-    private final AnswerGenerator answerGenerator;
+    private final Player player;
+    private final Referee referee;
 
-    private List<Integer> answer;
-    private Player player;
 
-    public GameService(InputView inputView, OutputView outputView, AnswerGenerator answerGenerator) {
+    public GameService(InputView inputView) {
+        this.player = new Player();
         this.inputView = inputView;
-        this.outputView = outputView;
-        this.answerGenerator = answerGenerator;
+        this.referee = new Referee();
     }
 
-    public boolean continueToPlay(boolean isCorrect) {
-        int restartNumber = 0;
-        answer = answerGenerator.getAnswer(isCorrect);
-        if (!isCorrect) {
-            return true;
-        }
-        while (restartNumber != 1 && restartNumber != 2) {
-            restartNumber = inputView.getRestartInput(Message.GAME_RESTART_MESSAGE);
-        }
+    public boolean startGameAndIsAnswer(String playerInput, List<Integer> answer) {
+        return referee.isCorrect(playerInput, answer);
+    }
+
+    public boolean continueToPlay(int restartNumber) {
         return player.isContinueToPlay(restartNumber);
     }
 
-    public boolean getHintAndIsAnswer() {
-        boolean isCorrectForStartGame = false;
-        answer = answerGenerator.getAnswer(isCorrectForStartGame);
-        Referee referee = new Referee(player.getInputList(), answer);
-        outputView.printString(referee.getHintMessage());
-        return referee.judgeIsAnswer();
+    public int getRestartNumberWhenAnswered(boolean isCorrect) {
+        int restartNumber = 0;
+        if (isCorrect) {
+            restartNumber = getRestartNumber();
+        }
+        return restartNumber;
     }
 
-    public void getPlayerInput() {
-        boolean isProperInput = false;
-        while (!isProperInput) {
-            this.player = new Player(inputView.getPlayerInput(Message.GAME_START_MESSAGE));
-            isProperInput = player.requestInputValidation();
+    private int getRestartNumber() {
+        int restartNumber = 0;
+        while (restartNumber != 1 && restartNumber != 2) {
+            restartNumber = inputView.getRestartInput(Message.GAME_RESTART_MESSAGE);
         }
+        return restartNumber;
+    }
+
+    public String getPlayerInput() {
+        boolean isProperInput = false;
+        String playerInput = "";
+        while (!isProperInput) {
+            playerInput = inputView.getPlayerInput(Message.GAME_START_MESSAGE);
+            isProperInput = referee.isProperInput(playerInput);
+        }
+        return playerInput;
     }
 }

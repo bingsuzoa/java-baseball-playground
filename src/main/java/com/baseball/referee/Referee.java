@@ -1,24 +1,28 @@
 package com.baseball.referee;
 
 
+import com.baseball.view.OutputView;
+
 import java.util.List;
 
-
 public class Referee {
-    private final Result result;
+    private final OutputView outputView;
 
-
-    public Referee(List<Integer> inputList, List<Integer> answer) {
-        this.result = new Result(inputList, answer);
+    public Referee() {
+        this.outputView = new OutputView();
     }
 
-    public boolean judgeIsAnswer() {
+    public boolean isProperInput(String playerInput) {
+        InputValidator inputValidator = new InputValidator(playerInput);
+        if(inputValidator.isProperInput()) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isCorrect(String playerInput, List<Integer> answer) {
+        Result result = new Result(playerInput, answer);
+        outputView.printString(result.getHintMessage());
         return result.isCorrect();
     }
-
-    public String getHintMessage() {
-        return result.getHint();
-    }
-
-
 }

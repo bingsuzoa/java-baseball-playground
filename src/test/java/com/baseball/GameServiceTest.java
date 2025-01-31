@@ -1,32 +1,32 @@
 package com.baseball;
 
-import com.baseball.player.Player;
+
+import com.baseball.view.InputView;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class GameServiceTest {
-    List<Integer> answer = new ArrayList<>(Arrays.asList(1, 2, 3));
 
-//    @DisplayName("플레이어의 입력이 정답인 경우 true")
-//    @Test
-//    public void 테스트1() {
-//        Player player = new Player("123");
-//        GameService gameService = new GameService(player, answer);
-//        boolean isProperInput = true;
-//        Assertions.assertTrue(gameService.startGameAndIsAnswer(isProperInput));
-//    }
-//
-//    @DisplayName("플레이어의 입력이 오답인 경우 false")
-//    @Test
-//    public void 테스트2() {
-//        Player player = new Player("213");
-//        GameService gameService = new GameService(player, answer);
-//        boolean isProperInput = true;
-//        Assertions.assertFalse(gameService.startGameAndIsAnswer(isProperInput));
-//    }
+    @DisplayName("플레이어의 입력이 정답인 경우 hint 출력 및 true 반환하는 테스트")
+    @Test
+    public void getHintAndIsAnswer() {
+        InputView inputView = new InputView();
+        GameService gameService = new GameService(inputView);
+        List<Integer> answer = new ArrayList<>(Arrays.asList(1, 2, 3));
+        Assertions.assertTrue(gameService.startGameAndIsAnswer("123", answer));
+    }
+
+    @DisplayName("플레이어의 입력에 따라 게임 진행 여부 결정하는 테스트")
+    @Test
+    public void continueToPlay_false_ifInputTwo() {
+        InputView inputView = new InputView();
+        GameService gameService = new GameService(inputView);
+        int restartNumber = 2;
+        Assertions.assertFalse(gameService.continueToPlay(2));
+    }
+
+
 }

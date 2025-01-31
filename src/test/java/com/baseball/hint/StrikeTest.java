@@ -9,15 +9,15 @@ import java.util.Arrays;
 import java.util.List;
 
 public class StrikeTest {
-    List<Integer> inputList = new ArrayList<>(Arrays.asList(1, 2, 3));
-
-//    @DisplayName("플레이어의 입력에서 '스트라이크'를 찾아 리스트에 담는 테스트")
+//    List<Integer> inputList = new ArrayList<>(Arrays.asList(1, 2, 3));
+//
+//    @DisplayName("스트라이크 찾아 반환하는 테스트")
 //    @Test
-//    public void 스트라이크찾아랏() {
+//    public void getStrike() {
 //        List<Integer> answer = new ArrayList<>(Arrays.asList(1, 2, 3));
-//        Strike strike = new Strike(inputList, answer);
-//        int strikeCount = 3;
-//        Assertions.assertEquals(strikeCount, strike.getStrikeCount());
+//        Strike Strike = new Strike(inputList, answer);
+//        int strike = 3;
+//        Assertions.assertEquals(strike, Strike.getStrike());
 //    }
 
 }

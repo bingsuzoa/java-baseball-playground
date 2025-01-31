@@ -10,23 +10,17 @@ import java.util.List;
 
 
 public class ResultTest {
-    List<Integer> inputList = new ArrayList<>(Arrays.asList(1, 2, 3));
-    List<Integer> answer = new ArrayList<>(Arrays.asList(1, 2, 3));
-    Result result = new Result(inputList, answer);
-
+//    List<Integer> inputList = new ArrayList<>(Arrays.asList(1, 2, 3));
+//    List<Integer> answer = new ArrayList<>(Arrays.asList(1, 2, 3));
+//    Result result = new Result(inputList, answer);
 //
-//    @DisplayName("힌트 출력")
+//    @DisplayName("정답여부를 반환하는 테스트")
 //    @Test
-//    public void 힌트출력() {
-//        String hintMessage = "3스트라이크 ";
-//        Assertions.assertEquals(hintMessage, result.getHint());
+//    public void judgeIsAnswer_true_ifAnswer() {
+//        List<Integer> answer = new ArrayList<>(Arrays.asList(1, 2, 3));
+//        Referee referee = new Referee(inputList, answer);
+//        Assertions.assertTrue(referee.judgeIsAnswer());
 //    }
 //
-//    @DisplayName("정답여부 확인")
-//    @Test
-//    public void 정답여부확인() {
-//        Assertions.assertTrue(result.isCorrect());
-//    }
-
 
 }

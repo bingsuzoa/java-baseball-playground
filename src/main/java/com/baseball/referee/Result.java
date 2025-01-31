@@ -16,20 +16,22 @@ public class Result {
 
     private boolean isCorrect;
 
-    public Result(List<Integer> inputList, List<Integer> answer) {
-        strike = new Strike(inputList, answer).getStrike();
-        ball = new Ball(inputList, answer).getBall();
+    public Result(String playerInput, List<Integer> answer) {
+        strike = new Strike(playerInput, answer).getStrike();
+        ball = new Ball(playerInput, answer).getBall();
         hintMessage = getHintMap(strike, ball);
     }
 
-    public String getHint() {
-
-        return hintMessage;
+    public Result getResult() {
+        return this;
     }
 
     public boolean isCorrect() {
-
         return isCorrect;
+    }
+
+    public String getHintMessage() {
+        return hintMessage;
     }
 
     private boolean checkIsCorrect(int strike) {

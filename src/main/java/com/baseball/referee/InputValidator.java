@@ -1,11 +1,11 @@
-package com.baseball.player;
+package com.baseball.referee;
 
 import com.baseball.view.Message;
 import com.baseball.view.OutputView;
 
-import java.util.ArrayList;
+
 import java.util.HashSet;
-import java.util.List;
+
 import java.util.Set;
 
 public class InputValidator {
@@ -15,10 +15,6 @@ public class InputValidator {
     public InputValidator(String playerInput) {
         this.playerInput = playerInput;
         this.outputView = new OutputView();
-    }
-
-    public String getInputFromValidator() {
-        return playerInput;
     }
 
     public boolean isProperInput() {
@@ -48,4 +44,3 @@ public class InputValidator {
         }
     }
 }
-
