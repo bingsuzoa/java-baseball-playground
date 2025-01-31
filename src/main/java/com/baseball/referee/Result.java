@@ -17,8 +17,8 @@ public class Result {
     private boolean isCorrect;
 
     public Result(List<Integer> inputList, List<Integer> answer) {
-        strikeCount = new Strike(inputList, answer).getStrikeCount();
-        ballCount = new Ball(inputList, answer).getBallCount();
+        strikeCount = new Strike(inputList, answer).getStrike();
+        ballCount = new Ball(inputList, answer).getBall();
         hintMessage = getHintMap(strikeCount, ballCount);
     }
 

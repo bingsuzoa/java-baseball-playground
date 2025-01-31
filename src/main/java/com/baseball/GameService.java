@@ -33,7 +33,7 @@ public class GameService {
             restartNumber = inputView.getRestartInput(Message.GAME_RESTART_MESSAGE);
             answer = computer.getReAnswer(restartNumber);
         }
-        return player.getPlayingState(restartNumber);
+        return player.isContinueToPlay(restartNumber);
     }
 
     public boolean getHintAndIsAnswer() {

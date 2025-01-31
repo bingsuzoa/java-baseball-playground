@@ -3,21 +3,22 @@ package com.baseball.hint;
 
 import java.util.List;
 
-public class Strike implements NumberComparator {
-    private final int strikeCount;
+public class Strike {
+    private final int strike;
 
     public Strike(List<Integer> inputList, List<Integer> answer) {
-        strikeCount = count(inputList, answer);
+        strike = findStrike(inputList, answer);
     }
 
-    public int getStrikeCount() {
-        return strikeCount;
+    public int getStrike() {
+        return strike;
     }
 
-    private int count(List<Integer> inputList, List<Integer> answer) {
+    private int findStrike(List<Integer> inputList, List<Integer> answer) {
+        NumberComparator numberComparator = new NumberComparator();
         int sum = 0;
         for (int i = 0; i < inputList.size(); i++) {
-            sum += compare(inputList.get(i), answer.get(i));
+            sum += numberComparator.compare(inputList.get(i), answer.get(i));
         }
         return sum;
     }

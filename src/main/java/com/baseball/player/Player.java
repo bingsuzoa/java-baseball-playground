@@ -1,17 +1,16 @@
 package com.baseball.player;
 
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
+    private boolean continueToPlay;
     private final InputValidator inputValidator;
-    private final State state;
 
     public Player(String playerInput) {
         this.inputValidator = new InputValidator(playerInput);
-        this.state = new State();
+        this.continueToPlay = true;
     }
 
     public List<Integer> getInputList() {
@@ -22,12 +21,15 @@ public class Player {
         return inputList;
     }
 
-    public boolean getPlayingState(int restartNumber) {
-        return state.checkPlayerWantsToPlay(restartNumber);
-    }
-
     public boolean requestInputValidation() {
         return inputValidator.isProperInput();
+    }
+
+    public boolean isContinueToPlay(int restartNumber) {
+        if (restartNumber == 2) {
+            continueToPlay = false;
+        }
+        return continueToPlay;
     }
 
 

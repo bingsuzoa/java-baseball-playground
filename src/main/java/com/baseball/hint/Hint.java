@@ -15,12 +15,4 @@ public enum Hint {
         return description;
     }
 
-    public int getCount(Hint hint) {
-        if (this.equals(hint)) {
-            return 1;
-        }
-        return 0;
-    }
-
-
 }
