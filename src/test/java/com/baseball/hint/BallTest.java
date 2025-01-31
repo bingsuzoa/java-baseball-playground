@@ -9,14 +9,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class BallTest {
-//    List<Integer> inputList = new ArrayList<>(Arrays.asList(1, 2, 3));
-//
-//    @DisplayName("볼 찾아 반환하는 테스트")
-//    @Test
-//    public void getBall() {
-//        List<Integer> answer = new ArrayList<>(Arrays.asList(1, 2, 3));
-//        Ball Ball = new Ball(inputList, answer);
-//        int ball = 0;
-//        Assertions.assertEquals(ball, Ball.getBall());
-//    }
+    String playerInput = "123";
+
+    @DisplayName("볼 찾아 반환하는 테스트")
+    @Test
+    public void getBall() {
+        List<Integer> answer = new ArrayList<>(Arrays.asList(1, 2, 3));
+        Ball Ball = new Ball(playerInput, answer);
+        int ball = 0;
+        Assertions.assertEquals(ball, Ball.getBall());
+    }
 }

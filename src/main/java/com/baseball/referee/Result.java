@@ -22,10 +22,6 @@ public class Result {
         hintMessage = getHintMap(strike, ball);
     }
 
-    public Result getResult() {
-        return this;
-    }
-
     public boolean isCorrect() {
         return isCorrect;
     }
