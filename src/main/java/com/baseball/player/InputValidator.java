@@ -8,16 +8,20 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Input {
+public class InputValidator {
     private final String playerInput;
     private final OutputView outputView;
 
-    public Input(String playerInput) {
+    public InputValidator(String playerInput) {
         this.playerInput = playerInput;
         this.outputView = new OutputView();
     }
 
-    public boolean checkProperInput() {
+    public String getInputFromValidator() {
+        return playerInput;
+    }
+
+    public boolean isProperInput() {
         try {
             isNumber1_9AndThree(playerInput);
             isDuplicate(playerInput);
@@ -26,14 +30,6 @@ public class Input {
             outputView.printMessage(Message.INVALID_GAME_INPUT);
         }
         return false;
-    }
-
-    public List<Integer> getInputList() {
-        List<Integer> inputList = new ArrayList<>();
-        for (int i = 0; i < playerInput.length(); i++) {
-            inputList.add(Integer.parseInt(playerInput.substring(i, i + 1)));
-        }
-        return inputList;
     }
 
     private void isNumber1_9AndThree(String playerInput) {

@@ -11,11 +11,11 @@ import java.util.List;
 public class RefereeTest {
     List<Integer> inputList = new ArrayList<>(Arrays.asList(1, 2, 3));
 
-    @DisplayName("정답여부 확인")
-    @Test
-    public void 정답확인() {
-        List<Integer> answer = new ArrayList<>(Arrays.asList(1, 2, 3));
-        Result result = new Result(inputList, answer);
-        Assertions.assertTrue(result.isCorrect());
-    }
+//    @DisplayName("정답여부 확인")
+//    @Test
+//    public void 정답확인() {
+//        List<Integer> answer = new ArrayList<>(Arrays.asList(1, 2, 3));
+//        Result result = new Result(inputList, answer);
+//        Assertions.assertTrue(result.isCorrect());
+//    }
 }

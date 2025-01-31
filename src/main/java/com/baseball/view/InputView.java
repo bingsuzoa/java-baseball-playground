@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InputView {
     private final int INVALID_NUMBER = 0;
-    private Scanner scanner;
+    private final Scanner scanner;
 
     OutputView outputView = new OutputView();
 
@@ -20,7 +20,9 @@ public class InputView {
     public int getRestartInput(Message message) {
         try {
             outputView.printMessage(message);
-            return scanner.nextInt();
+            int restartNumber = scanner.nextInt();
+            scanner.nextLine();
+            return restartNumber;
         } catch (NumberFormatException e) {
             outputView.printMessage(message);
         }

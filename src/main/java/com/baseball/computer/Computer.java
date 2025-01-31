@@ -12,12 +12,14 @@ public class Computer {
     }
 
     public List<Integer> getAnswer() {
-        answer = makeRandomList();
+        if(answer.isEmpty()) {
+            answer = makeRandomList();
+            return answer;
+        }
         return answer;
     }
-
-    public List<Integer> getReAnswer(boolean isCorrect) {
-        if (isCorrect) {
+    public List<Integer> getReAnswer(int restartNumber) {
+        if (restartNumber == 1) {
             answer.clear();
             answer = makeRandomList();
         }

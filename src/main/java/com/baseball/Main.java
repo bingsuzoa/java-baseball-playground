@@ -2,32 +2,24 @@ package com.baseball;
 
 
 import com.baseball.computer.Computer;
-import com.baseball.player.Player;
 import com.baseball.view.InputView;
-import com.baseball.view.Message;
-
-
-import java.util.List;
+import com.baseball.view.OutputView;
 
 public class Main {
 
     public static void main(String[] args) {
-        boolean wantsToPlay = true;
-        boolean isCorrect;
-        boolean isProperInput = false;
+        boolean isCorrect = false;
+        boolean continueToPlay = true;
 
-        Computer computer = new Computer();
-        Player player;
         InputView inputView = new InputView();
-        List<Integer> answer = computer.getAnswer();
+        OutputView outputView = new OutputView();
+        Computer computer = new Computer();
+        GameService gameService = new GameService(inputView, outputView, computer);
 
-        while (!isProperInput || wantsToPlay) {
-            player = new Player(inputView.getPlayerInput(Message.GAME_START_MESSAGE));
-            isProperInput = player.isProperInput();
-            GameService gameService = new GameService(player, answer);
-            isCorrect = gameService.startGameAndIsAnswer(isProperInput);
-            wantsToPlay = gameService.checkWantsToPlay(isCorrect);
-            answer = computer.getReAnswer(isCorrect);
+        while (!isCorrect || continueToPlay) {
+            gameService.getPlayerInput();
+            isCorrect = gameService.getHintAndIsAnswer();
+            continueToPlay = gameService.continueToPlay(isCorrect);
         }
 
     }
