@@ -1,5 +1,6 @@
 package com.baseball.model.referee;
 
+import com.baseball.model.computer.GameNumberRule;
 import com.baseball.view.Message;
 import com.baseball.view.OutputView;
 
@@ -39,7 +40,7 @@ public class InputValidator {
         for (int i = 0; i < playerInput.length(); i++) {
             uniqueNumbers.add(Integer.parseInt(playerInput.substring(i, i + 1)));
         }
-        if (uniqueNumbers.size() != 3) {
+        if (uniqueNumbers.size() != GameNumberRule.COUNT.getValue()) {
             throw new IllegalArgumentException(Message.DUPLICATED_GAME_INPUT.getMessage());
         }
     }

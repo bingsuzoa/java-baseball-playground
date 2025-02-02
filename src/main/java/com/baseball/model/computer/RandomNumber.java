@@ -24,7 +24,7 @@ public class RandomNumber implements AnswerGenerator {
     private List<Integer> makeRandomList() {
         clearAnswer();
         Set<Integer> uniqueNumbers = new HashSet<>();
-        while (uniqueNumbers.size() < 3) {
+        while (uniqueNumbers.size() < GameNumberRule.COUNT.getValue()) {
             uniqueNumbers.add(makeRandomNumber());
         }
         for (int number : uniqueNumbers) {
@@ -40,6 +40,7 @@ public class RandomNumber implements AnswerGenerator {
     }
 
     private int makeRandomNumber() {
-        return random.nextInt(9) + 1;
+        return random.nextInt(GameNumberRule.RANGE_END.getValue())
+                + GameNumberRule.RANGE_START.getValue();
     }
 }
