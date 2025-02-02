@@ -17,11 +17,9 @@ public class GameController {
     public void startGame() {
         boolean continueToPlay;
         do {
-            String validatedInput = getValidatedInput();
-            boolean isCorrect = gameService.getAnswer(validatedInput);
+            boolean isCorrect = gameService.getAnswer(getValidatedInput());
             outputView.printString(gameService.getHintMessage());
-            int playOption = getRestartNumberWhenIsCorrect(isCorrect);
-            continueToPlay = gameService.continueToPlay(playOption);
+            continueToPlay = gameService.continueToPlay(getRestartNumberWhenIsCorrect(isCorrect));
         } while (continueToPlay);
     }
 

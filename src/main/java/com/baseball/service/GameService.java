@@ -1,6 +1,8 @@
 package com.baseball.service;
 
 
+import com.baseball.model.computer.AnswerGenerator;
+import com.baseball.model.computer.RandomNumber;
 import com.baseball.model.player.Player;
 import com.baseball.model.referee.Referee;
 
@@ -11,7 +13,8 @@ public class GameService {
 
     public GameService() {
         this.player = new Player();
-        this.referee = new Referee();
+        AnswerGenerator answerGenerator = new RandomNumber();
+        this.referee = new Referee(answerGenerator);
     }
 
     public boolean getAnswer(String playerInput) {
