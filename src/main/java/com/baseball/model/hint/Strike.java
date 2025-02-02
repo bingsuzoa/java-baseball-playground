@@ -1,5 +1,4 @@
-package com.baseball.hint;
-
+package com.baseball.model.hint;
 
 import java.util.List;
 

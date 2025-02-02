@@ -1,9 +1,9 @@
-package com.baseball.referee;
+package com.baseball.model.referee;
 
 
-import com.baseball.hint.Ball;
-import com.baseball.hint.Hint;
-import com.baseball.hint.Strike;
+import com.baseball.model.hint.Ball;
+import com.baseball.model.hint.Hint;
+import com.baseball.model.hint.Strike;
 import com.baseball.view.Message;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.baseball.hint;
+package com.baseball.model.hint;
 
 public enum Hint {
     STRIKE("스트라이크"),

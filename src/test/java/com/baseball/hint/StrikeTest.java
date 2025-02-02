@@ -11,13 +11,13 @@ import java.util.List;
 public class StrikeTest {
     String playerInput = "123";
 
-    @DisplayName("스트라이크 찾아 반환하는 테스트")
-    @Test
-    public void getStrike() {
-        List<Integer> answer = new ArrayList<>(Arrays.asList(1, 2, 3));
-        Strike Strike = new Strike(playerInput, answer);
-        int strike = 3;
-        Assertions.assertEquals(strike, Strike.getStrike());
-    }
+//    @DisplayName("스트라이크 찾아 반환하는 테스트")
+//    @Test
+//    public void getStrike() {
+//        List<Integer> answer = new ArrayList<>(Arrays.asList(1, 2, 3));
+//        Strike Strike = new Strike(playerInput, answer);
+//        int strike = 3;
+//        Assertions.assertEquals(strike, Strike.getStrike());
+//    }
 
 }

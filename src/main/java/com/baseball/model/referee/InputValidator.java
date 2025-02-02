@@ -1,4 +1,4 @@
-package com.baseball.referee;
+package com.baseball.model.referee;
 
 import com.baseball.view.Message;
 import com.baseball.view.OutputView;

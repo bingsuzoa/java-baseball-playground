@@ -1,5 +1,4 @@
-package com.baseball.computer;
-
+package com.baseball.model.computer;
 
 import java.util.*;
 
