@@ -1,26 +1,45 @@
-## [NEXTSTEP 플레이그라운드의 미션 진행 과정](https://github.com/next-step/nextstep-docs/blob/master/playground/README.md)
+## 미션 - 숫자 야구 게임
 
----
-## 학습 효과를 높이기 위해 추천하는 미션 진행 방법
+### 구현 기능 목록
 
----
-1. 피드백 강의 전까지 미션 진행 
-> 피드백 강의 전까지 혼자 힘으로 미션 진행. 미션을 진행하면서 하나의 작업이 끝날 때 마다 add, commit
-> 예를 들어 다음 숫자 야구 게임의 경우 0, 1, 2단계까지 구현을 완료한 후 push
+### *<span style = 'color : #FFCD28'>Computer</span>*<br/>
+**🔆 역할 : 1-9까지의 서로 다른 임의의 수 3개를 정답으로 정한다.**<br/>
 
-![mission baseball](https://raw.githubusercontent.com/next-step/nextstep-docs/master/playground/images/mission_baseball.png)
+- [ ] 자료구조(Set)을 활용하여 크기가 3이 될 때까지, 1-9까지의 랜덤한 숫자를 입력받는다.<br/>
+- [ ] 정답인 경우, 다시 정답을 생성한다.<br/>
 
----
-2. 피드백 앞 단계까지 미션 구현을 완료한 후 피드백 강의를 학습한다.
+### *<span style = 'color : #FFCD28'>Hint</span>*<br/>
+**🔆 역할 : 플레이어의 입력과 정답을 비교하여 스트라이크, 볼, 낫싱을 얻는다.**<br/>
 
----
-3. Git 브랜치를 master 또는 main으로 변경한 후 피드백을 반영하기 위한 새로운 브랜치를 생성한 후 처음부터 다시 미션 구현을 도전한다.
+- [ ] 입력과 정답을 비교하여 볼, 스트라이크, 낫싱을 얻어 반환한다.<br/>
 
-```
-git branch -a // 모든 로컬 브랜치 확인
-git checkout master // 기본 브랜치가 master인 경우
-git checkout main // 기본 브랜치가 main인 경우
 
-git checkout -b 브랜치이름
-ex) git checkout -b apply-feedback
-```
+### *<span style = 'color : #FFCD28'>Player</span>*<br/>
+**🔆 역할 : 플레이어의 숫자입력을 받아 플레이어가 게임을 원하는 상태인지 확인하여 반환한다.**<br/>
+
+- [ ] 게임 지속 여부에 대한 입력값이 파라미터로 넘어온 경우, 플레이어가 게임 진행을 원하는지 확인한다. (진행 : 1, 종료 : 2)<br/>
++ - [ ] 1을 입력한 경우, 플레이어의 상태를 continueToPlay = True 를 반환한다..<br/>
++ - [ ] 2를 입력한 경우, 플레이어의 상태를 continueToPlay = False 를 반환한다. <br/>
++ - [ ] 예외 : 숫자가 아닌 입력을 한 경우<br/>
+
+### *<span style = 'color : #FFCD28'>Referee</span>*<br/>
+**🔆 역할 : 플레이어가 입력한 값의 유효성 검사를 수행한다.**<br/>
+**🔆 역할 : 정답인지 확인한다.**<br/>
+**🔆 역할 : 힌트메세지를 반환한다.**<br/>
+
+- [ ] 임의의 수 3개가 올바른 입력인지 유효성 검사를 시행한다.<br/>
++ - [ ] 예외 : 3개 이상의 입력인 경우<br/>
++ - [ ] 예외 : 숫자가 아닌 입력이 포함된 경우<br/>
++ - [ ] 예외 : 중복인 숫자를 입력한 경우<br/>
+- [ ] <span style='color : #fff5b1'>Result</span>로부터 정답여부를 가져와서 반환한다.<br/>
+- [ ] <span style='color : #fff5b1'>Result</span>로부터 힌트메세지를 가져와서 반환한다.<br/>
+
+### *<span style = 'color : #2CE0BC	'>Logic</span>*<br/>
+- [ ] 플레이어는 숫자를 입력한다.<br/>
+- [ ] 유효성 검사를 시행한다.<br/>
+- [ ] 유효성 검사 완료 후, 정답을 확인한다.<br/>
+- [ ] 정답인 경우에는, 랜덤 정답을 재생성한다. <br/>
+- [ ] 플레이어가 게임 진행을 계속 원하는지 확인한다.<br/>
+- [ ] 플레이어가 continueToPlay = True 인 경우, 플레이어로부터 서로 다른 임의의 수 3개를 문자열로 입력받는다.<br/>
++ - [ ] 정답인 경우, 자동으로 정답은 다시 생성된다.<br/>
++ - [ ] 1,2가 아닌 숫자를 입력한 경우, 플레이어의 상태를 wantsToPlay = False 를 반환한다. <br/>
